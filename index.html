@@ -125,5 +125,16 @@ function sendOrder(){
  const separator = isApple ? '&' : '?';
  const imessageUrl = `sms:${phoneNumber}${separator}body=${encodeURIComponent(text)}`;
  window.location.href = imessageUrl;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const btn = document.getElementById('themeBtn');
+  if(document.body.classList.contains('light-mode')) {
+    btn.textContent = '🌙 Dark';
+  } else {
+    btn.textContent = '☀️ Light';
+  }
+}
 </script>
 </body></html>
