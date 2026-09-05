@@ -5,31 +5,62 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MISU — Cozy Plushies</title>
 <style>
-:root{--cream:#f7f1e8;--paper:#fffaf4;--coffee:#3b241b;--cocoa:#6c4332;--line:#e8d8c8}
-*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--cream);color:var(--coffee)}
-.wrap{max-width:1000px;margin:auto;padding:0 20px} nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
-.brand{font-weight:900;letter-spacing:.16em;font-size:1.3rem}.pill,.btn{border-radius:999px;padding:11px 17px;text-decoration:none;font-weight:800}
-.pill{border:1px solid var(--coffee);color:var(--coffee)} .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;min-height:72vh}
-h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.9;margin:10px 0 20px} h1 span{display:block;font-size:.34em;line-height:1.4;margin-top:18px}
-.lead{line-height:1.9;color:#654b40}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-block;cursor:pointer}
-.primary{background:var(--coffee);color:white;border:0}.secondary{color:var(--coffee);border:1px solid var(--coffee)}
+:root {
+  --cream: #f7f1e8;
+  --paper: #fffaf4;
+  --coffee: #3b241b;
+  --cocoa: #6c4332;
+  --line: #e8d8c8;
+  --bg-color: var(--cream);
+  --text-color: var(--coffee);
+  --card-bg: var(--paper);
+}
+
+body.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --card-bg: #f9f9f9;
+  --line: #e0e0e0;
+}
+
+*{box-sizing:border-box} 
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg-color);color:var(--text-color);transition:background 0.3s, color 0.3s}
+.wrap{max-width:1000px;margin:auto;padding:0 20px} 
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font-weight:900;letter-spacing:.16em;font-size:1.3rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.pill,.btn{border-radius:999px;padding:11px 17px;text-decoration:none;font-weight:800}
+.pill{border:1px solid var(--text-color);color:var(--text-color)} 
+.theme-toggle{background:none;border:1px solid var(--text-color);color:var(--text-color);padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:bold}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;min-height:72vh}
+h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.9;margin:10px 0 20px} 
+h1 span{display:block;font-size:.34em;line-height:1.4;margin-top:18px}
+.lead{line-height:1.9;opacity:0.85}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-block;cursor:pointer}
+.primary{background:var(--coffee);color:white;border:0}.secondary{color:var(--text-color);border:1px solid var(--text-color)}
 .visual{background:linear-gradient(145deg,#fffdf8,#ead7c3);border:1px solid var(--line);border-radius:35px;min-height:390px;display:flex;align-items:center;justify-content:center;box-shadow:0 25px 65px #3b241b20}
 .cup{width:min(320px,85%);height:250px;border-radius:50px;background:linear-gradient(#6c4332 0 10%,#ead9c3 10% 100%);border:5px solid #ffffffaa;position:relative;display:flex;align-items:center;justify-content:center;font-size:5rem}
-.cup:after{content:"MISU";position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:white;padding:8px 17px;border-radius:999px;font-weight:900;letter-spacing:.12em;font-size:1rem}
-section{padding:64px 0}.section-title{font-size:clamp(2rem,5vw,3.8rem);margin:0 0 12px}.muted{color:#72584c;line-height:1.8}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px}
+.cup:after{content:"MISU";position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:white;color:#3b241b;padding:8px 17px;border-radius:999px;font-weight:900;letter-spacing:.12em;font-size:1rem}
+section{padding:64px 0}.section-title{font-size:clamp(2rem,5vw,3.8rem);margin:0 0 12px}.muted{opacity:0.8;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.card{background:var(--card-bg);border:1px solid var(--line);border-radius:22px;padding:22px}
 .price{margin-top:25px;background:var(--coffee);color:#fff;border-radius:26px;padding:26px;display:flex;justify-content:space-between;align-items:center}.price strong{font-size:2.8rem}
-.order{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.field{margin-bottom:15px}label{display:block;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;padding:13px;border:1px solid #dbc6b2;border-radius:13px;font:inherit}
-.summary{background:var(--cream);border-radius:20px;padding:20px;height:fit-content}.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed #d8c4b2}.row:last-child{border-bottom:0}
-.note{margin-top:16px;padding:13px;border-radius:13px;background:#eee0d3;font-size:.9rem;line-height:1.6}footer{text-align:center;padding:30px;color:#7a6257}
+.order{background:var(--card-bg);border:1px solid var(--line);border-radius:28px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.field{margin-bottom:15px}label{display:block;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;padding:13px;border:1px solid #dbc6b2;border-radius:13px;font:inherit;background:var(--bg-color);color:var(--text-color)}
+.summary{background:var(--bg-color);border-radius:20px;padding:20px;height:fit-content}.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed #d8c4b2}.row:last-child{border-bottom:0}
+.note{margin-top:16px;padding:13px;border-radius:13px;background:var(--line);font-size:.9rem;line-height:1.6}footer{text-align:center;padding:30px;opacity:0.8}
 #toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#2d201a;color:#fff;padding:11px 18px;border-radius:999px;opacity:0;transition:.2s}#toast.show{opacity:1}
 @media(max-width:760px){.hero,.order,.grid{grid-template-columns:1fr}.hero{padding:20px 0 45px;min-height:auto}.visual{min-height:300px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav><div class="brand">MISU</div><a class="pill" href="#order">Order Now</a></nav>
+<nav>
+  <div class="brand">MISU</div>
+  <div class="nav-actions">
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
+    <a class="pill" href="#order">Order Now</a>
+  </div>
+</nav>
+
 <section class="hero">
 <div>
 <div style="font-weight:800;color:var(--cocoa)">SOFT • COZY • ADORABLE</div>
@@ -61,7 +92,7 @@ section{padding:64px 0}.section-title{font-size:clamp(2rem,5vw,3.8rem);margin:0 
 <div class="field"><label>Pickup Time</label><input id="time" placeholder="e.g. 8:30 PM"></div>
 <div class="field"><label>Notes</label><textarea id="notes" rows="3" placeholder="Optional notes..."></textarea></div>
 <button class="btn primary" style="width:100%;font:inherit" onclick="sendOrder()">Send via iMessage</button>
-<div class="note">Please make sure to pick up your order at the exact time of delivery.</div>
+<div class="note">Please make sure to pick up your order at the designated campus or dorm drop-off location.</div>
 </div>
 <div class="summary">
 <h3>Order Summary</h3>
@@ -75,6 +106,7 @@ section{padding:64px 0}.section-title{font-size:clamp(2rem,5vw,3.8rem);margin:0 
 </div>
 <footer>MISU © 2026 🤎</footer>
 <div id="toast">Opening iMessage...</div>
+
 <script>
 const qty=document.getElementById('qty');
 function update(){const q=Number(qty.value);document.getElementById('sq').textContent=q;document.getElementById('st').textContent='$'+(q*12)}
@@ -88,11 +120,21 @@ function sendOrder(){
  
  const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600);
  
- const phoneNumber = "+10000000000"; // PUT HERE
+ const phoneNumber = "+10000000000";
  const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
  const separator = isApple ? '&' : '?';
- const ImessageUrl = `sms:${phoneNumber}${separator}body=${encodeURIComponent(text)}`;
- window.location.href = ImessageUrl;
+ const imessageUrl = `sms:${phoneNumber}${separator}body=${encodeURIComponent(text)}`;
+ window.location.href = imessageUrl;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const btn = document.getElementById('themeBtn');
+  if(document.body.classList.contains('light-mode')) {
+    btn.textContent = '🌙 Dark';
+  } else {
+    btn.textContent = '☀️ Light';
+  }
 }
 </script>
 </body></html>
