@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MISU — Cozy Plushies</title>
+<style>
+:root{--cream:#f7f1e8;--paper:#fffaf4;--coffee:#3b241b;--cocoa:#6c4332;--line:#e8d8c8}
+*{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--cream);color:var(--coffee)}
+.wrap{max-width:1000px;margin:auto;padding:0 20px} nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.brand{font-weight:900;letter-spacing:.16em;font-size:1.3rem}.pill,.btn{border-radius:999px;padding:11px 17px;text-decoration:none;font-weight:800}
+.pill{border:1px solid var(--coffee);color:var(--coffee)} .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;min-height:72vh}
+h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.9;margin:10px 0 20px} h1 span{display:block;font-size:.34em;line-height:1.4;margin-top:18px}
+.lead{line-height:1.9;color:#654b40}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-block;cursor:pointer}
+.primary{background:var(--coffee);color:white;border:0}.secondary{color:var(--coffee);border:1px solid var(--coffee)}
+.visual{background:linear-gradient(145deg,#fffdf8,#ead7c3);border:1px solid var(--line);border-radius:35px;min-height:390px;display:flex;align-items:center;justify-content:center;box-shadow:0 25px 65px #3b241b20}
+.cup{width:min(320px,85%);height:250px;border-radius:50px;background:linear-gradient(#6c4332 0 10%,#ead9c3 10% 100%);border:5px solid #ffffffaa;position:relative;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.cup:after{content:"MISU";position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:white;padding:8px 17px;border-radius:999px;font-weight:900;letter-spacing:.12em;font-size:1rem}
+section{padding:64px 0}.section-title{font-size:clamp(2rem,5vw,3.8rem);margin:0 0 12px}.muted{color:#72584c;line-height:1.8}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px}
+.price{margin-top:25px;background:var(--coffee);color:#fff;border-radius:26px;padding:26px;display:flex;justify-content:space-between;align-items:center}.price strong{font-size:2.8rem}
+.order{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.field{margin-bottom:15px}label{display:block;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;padding:13px;border:1px solid #dbc6b2;border-radius:13px;font:inherit}
+.summary{background:var(--cream);border-radius:20px;padding:20px;height:fit-content}.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed #d8c4b2}.row:last-child{border-bottom:0}
+.note{margin-top:16px;padding:13px;border-radius:13px;background:#eee0d3;font-size:.9rem;line-height:1.6}footer{text-align:center;padding:30px;color:#7a6257}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#2d201a;color:#fff;padding:11px 18px;border-radius:999px;opacity:0;transition:.2s}#toast.show{opacity:1}
+@media(max-width:760px){.hero,.order,.grid{grid-template-columns:1fr}.hero{padding:20px 0 45px;min-height:auto}.visual{min-height:300px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="brand">MISU</div><a class="pill" href="#order">Order Now</a></nav>
+<section class="hero">
+<div>
+<div style="font-weight:800;color:var(--cocoa)">SOFT • COZY • ADORABLE</div>
+<h1>MISU<span>Handmade Soft Plushies & Buddies</span></h1>
+<p class="lead">Super soft individual plushies, made in limited quantities to keep them unique. Perfect study buddies or gifts for your friends! 🧸🤎</p>
+<div class="cta"><a class="btn primary" href="#order">Get Yours</a><a class="btn secondary" href="#menu">Details</a></div>
+</div>
+<div class="visual"><div class="cup">🧸</div></div>
+</section>
+
+<section id="menu">
+<h2 class="section-title">Simple, Soft & Cute.</h2>
+<p class="muted">A small collection to ensure top quality and fast delivery.</p>
+<div class="grid">
+<div class="card"><b>🧸 Ultra Soft</b><p class="muted">Made with premium hypoallergenic plush material.</p></div>
+<div class="card"><b>🎁 Gift Ready</b><p class="muted">Comes neatly wrapped in aesthetic packaging.</p></div>
+<div class="card"><b>✨ Limited Edition</b><p class="muted">Small batches crafted with love and extra care.</p></div>
+</div>
+<div class="price"><div><b>MISU PLUSHIE</b><div style="opacity:.8;margin-top:4px">Standard Size</div></div><strong>$12</strong></div>
+</section>
+
+<section id="order">
+<h2 class="section-title">Order Now</h2>
+<p class="muted">Fill out your details below and click to place your order directly via iMessage!</p>
+<div class="order">
+<div>
+<div class="field"><label>Pickup Name</label><input id="name" placeholder="e.g. Sarah"></div>
+<div class="field"><label>Quantity</label><select id="qty"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+<div class="field"><label>Pickup Time</label><input id="time" placeholder="e.g. 8:30 PM"></div>
+<div class="field"><label>Notes</label><textarea id="notes" rows="3" placeholder="Optional notes..."></textarea></div>
+<button class="btn primary" style="width:100%;font:inherit" onclick="sendOrder()">Send via iMessage</button>
+<div class="note">Please make sure to pick up your order at the exact time of delivery.</div>
+</div>
+<div class="summary">
+<h3>Order Summary</h3>
+<div class="row"><span>Price per unit</span><b>$12</b></div>
+<div class="row"><span>Quantity</span><b id="sq">1</b></div>
+<div class="row"><span>Total</span><b id="st">$12</b></div>
+<p class="muted" style="font-size:.9rem">Directly redirects your order summary to iMessage.</p>
+</div>
+</div>
+</section>
+</div>
+<footer>MISU © 2026 🤎</footer>
+<div id="toast">Opening iMessage...</div>
+<script>
+const qty=document.getElementById('qty');
+function update(){const q=Number(qty.value);document.getElementById('sq').textContent=q;document.getElementById('st').textContent='$'+(q*12)}
+qty.addEventListener('change',update);
+
+function sendOrder(){
+ const n=document.getElementById('name').value||'No name';
+ const q=Number(qty.value); const t=document.getElementById('time').value||'To be decided';
+ const notes=document.getElementById('notes').value||'None';
+ const text=`MISU Plushie Order 🧸\nName: ${n}\nQuantity: ${q}\nTotal: $${q*12}\nPickup Time: ${t}\nNotes: ${notes}`;
+ 
+ const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600);
+ 
+ const phoneNumber = "+10000000000"; // PUT HERE
+ const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
+ const separator = isApple ? '&' : '?';
+ const ImessageUrl = `sms:${phoneNumber}${separator}body=${encodeURIComponent(text)}`;
+ window.location.href = ImessageUrl;
+}
+</script>
+</body></html>
